@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: gpt-content-api
+
+openai:
+  api-key: ${OPENAI_API_KEY}
+  model: gpt-3.5-turbo
+  url: https://api.openai.com/v1/chat/completions
+
