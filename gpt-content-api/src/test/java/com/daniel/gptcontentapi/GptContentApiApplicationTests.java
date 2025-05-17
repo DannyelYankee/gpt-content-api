@@ -1,4 +1,4 @@
-package com.daniel.gpt_content_api;
+package com.daniel.gptcontentapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

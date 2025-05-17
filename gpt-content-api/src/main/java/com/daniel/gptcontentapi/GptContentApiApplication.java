@@ -1,4 +1,4 @@
-package com.daniel.gpt_content_api;
+package com.daniel.gptcontentapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
