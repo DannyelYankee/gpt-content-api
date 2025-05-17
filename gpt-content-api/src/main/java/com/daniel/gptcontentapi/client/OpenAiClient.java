@@ -1,8 +1,11 @@
 package com.daniel.gptcontentapi.client;
 
 import com.daniel.gptcontentapi.configuration.OpenAiClientConfig;
+import com.daniel.gptcontentapi.constants.OpenAiFallbacks;
+import com.daniel.gptcontentapi.constants.OpenAiPrompts;
 import com.daniel.gptcontentapi.dtos.Choice;
 import com.daniel.gptcontentapi.dtos.Message;
+import com.daniel.gptcontentapi.dtos.Role;
 import com.daniel.gptcontentapi.dtos.request.OpenAiRequest;
 import com.daniel.gptcontentapi.dtos.response.OpenAiResponse;
 import lombok.AllArgsConstructor;
@@ -17,10 +20,7 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 public class OpenAiClient {
-    private final static String USER_ROLE = "user";
-    private final static String SYSTEM_ROLE = "system";
-    private final static String SYSTEM_CONTENT = "You are a helpful summarization assistant.";
-    private final static String EMPTY_CHOICES_MSG = "There's been a problem with your prompt. Try again please.";
+
     private final OpenAiClientConfig openAiClientConfig;
 
 
@@ -42,25 +42,44 @@ public class OpenAiClient {
         final List<Choice> choices = response.getChoices();
 
         if (choices.isEmpty()) {
-            response.setChoices(Collections.singletonList(
-                    Choice.builder()
-                            .message(
-                                    Message.builder()
-                                            .content(EMPTY_CHOICES_MSG)
-                                            .build())
-                            .build()
-            ));
+            response.setChoices(emptyChoicesFallback());
         }
         return response;
 
+    }
+
+    private List<Choice> emptyChoicesFallback() {
+        return Collections.singletonList(
+                Choice.builder()
+                        .message(
+                                Message.builder()
+                                        .content(OpenAiFallbacks.EMPTY_CHOICES)
+                                        .build())
+                        .build()
+        );
     }
 
     private OpenAiRequest createRequest(String prompt) {
         return OpenAiRequest.builder()
                 .model(openAiClientConfig.getOpenAiProperties().getModel())
                 .messages(Arrays.asList(
-                        Message.builder().role(SYSTEM_ROLE).content(SYSTEM_CONTENT).build(),
-                        Message.builder().role(USER_ROLE).content(prompt).build())).build();
+                        getSystemMessage(),
+                        getUserMessage(prompt)))
+                .build();
+    }
+
+    private Message getSystemMessage() {
+        return Message.builder()
+                .role(Role.SYSTEM)
+                .content(OpenAiPrompts.SYSTEM_SUMMARIZER)
+                .build();
+    }
+
+    private Message getUserMessage(String prompt) {
+        return Message.builder()
+                .role(Role.USER)
+                .content(prompt)
+                .build();
     }
 
 }

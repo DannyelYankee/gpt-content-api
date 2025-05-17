@@ -2,12 +2,16 @@ package com.daniel.gptcontentapi.dtos.request;
 
 import com.daniel.gptcontentapi.dtos.Message;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class OpenAiRequest {
     @NotBlank
