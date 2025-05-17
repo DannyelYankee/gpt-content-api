@@ -1,6 +1,6 @@
-package com.daniel.gptcontentapi.dtos.request;
+package com.daniel.gptcontentapi.dtos.client.request;
 
-import com.daniel.gptcontentapi.dtos.Message;
+import com.daniel.gptcontentapi.dtos.client.Message;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.daniel.gptcontentapi.dtos.response;
+package com.daniel.gptcontentapi.dtos;
 
 import lombok.Builder;
 import lombok.Data;

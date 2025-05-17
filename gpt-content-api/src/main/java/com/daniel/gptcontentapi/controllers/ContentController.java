@@ -1,7 +1,7 @@
 package com.daniel.gptcontentapi.controllers;
 
-import com.daniel.gptcontentapi.dtos.request.SummarizeRequest;
-import com.daniel.gptcontentapi.dtos.response.SummarizeResponse;
+import com.daniel.gptcontentapi.dtos.SummarizeRequest;
+import com.daniel.gptcontentapi.dtos.SummarizeResponse;
 import com.daniel.gptcontentapi.services.SummarizerService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

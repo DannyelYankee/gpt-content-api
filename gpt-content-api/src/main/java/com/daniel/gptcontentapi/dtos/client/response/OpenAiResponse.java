@@ -1,6 +1,6 @@
-package com.daniel.gptcontentapi.dtos.response;
+package com.daniel.gptcontentapi.dtos.client.response;
 
-import com.daniel.gptcontentapi.dtos.Choice;
+import com.daniel.gptcontentapi.dtos.client.Choice;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

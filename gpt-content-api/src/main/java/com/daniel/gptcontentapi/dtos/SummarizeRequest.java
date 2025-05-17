@@ -1,4 +1,4 @@
-package com.daniel.gptcontentapi.dtos.request;
+package com.daniel.gptcontentapi.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

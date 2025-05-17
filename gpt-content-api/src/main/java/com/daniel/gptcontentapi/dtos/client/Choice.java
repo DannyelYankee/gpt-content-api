@@ -1,4 +1,4 @@
-package com.daniel.gptcontentapi.dtos;
+package com.daniel.gptcontentapi.dtos.client;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
